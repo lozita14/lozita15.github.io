@@ -1,0 +1,23 @@
+{
+    "discos":[{
+        "id":"1",
+        "nombre":"The Dark Side of the Moon",
+        "grupo":"Pink Floyd",
+        "año":"1 de marzo 1973"
+    },{
+        "id":"2",
+        "nombre":"What's Going On",
+        "grupo":"Soul Marvin Gaye",
+        "año":"21 de mayo de 1971"
+    },{
+        "id":"3",
+        "nombre":"Rumours",
+        "grupo":"Fleetwood Mac",
+        "año":"En 1977"
+    },{
+        "id":"4",
+        "nombre":"The Beatles",
+        "grupo":"The Beatles",
+        "año":"22 de noviembre de 1968"
+    }]
+}
