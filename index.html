@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen</title>
+    <style>
+        table,tr,td{
+            border: solid cyan 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedordiv"></div>
+    <button id="button1">ejercicio1</button>
+    <button id="button2">ejercicio2</button>
+    <button id="button3">limpiar</button>
+    <script>
+        fetch('./discos.json')
+            .then(function(response) {
+                if (!response.ok) {
+                throw new Error('No se pudo cargar el archivo JSON.');
+                }
+                return response.json(); // Convertimos la respuesta a JSON
+            })
+            .then(function(data) {
+                document.getElementById("button1").onclick = boton1;
+                document.getElementById("button2").onclick = boton2;
+                document.getElementById("button3").onclick = limpiar;
+
+                function boton1(){
+                    let sel = document.createElement("select");
+                    for(objeto of data.discos){
+                        let val1 = document.createElement("option");
+                        val1.innerHTML = objeto.nombre;
+                        val1.value = objeto.id;
+                        sel.appendChild(val1);
+                        let contenedordiv = document.getElementById("contenedordiv");
+                        contenedordiv.appendChild(sel);
+                    }}
+
+                 function boton2(){
+                    let tablas = document.createElement("table");
+                    for(objeto of data.discos){
+                        let trd = document.createElement("tr");
+                        let td1 = document.createElement("td");
+                        td1.innerHTML = objeto.nombre;
+                        let td2 = document.createElement("td");
+                        td2.innerHTML = objeto.grupo;
+                        let td3 = document.createElement("td");
+                        td3.innerHTML = objeto.año;
+                        let td4 = document.createElement("td");
+                        td4.innerHTML = objeto.id;
+
+                        let contenedordiv = document.getElementById("contenedordiv");
+                        contenedordiv.appendChild(tablas);
+                        tablas.appendChild(trd);
+                        trd.appendChild(td1);
+                        trd.appendChild(td2);
+                        trd.appendChild(td3);
+                        trd.appendChild(td4);
+                    }
+                 }   
+                 function limpiar(){
+                    let limpiar = document.getElementById("contenedordiv");
+                    limpiar.innerHTML = " ";
+                 }
+            })
+            .catch(function(error) {
+                console.error('Se produjo un error al cargar el archivo JSON:', error);
+            });
+
+ </script>
+</body>
+</html>
